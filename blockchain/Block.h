@@ -1,6 +1,9 @@
 #pragma once
 #include <cstdint>
 #include <iostream>
+#include <sstream>
+#include <time.h>
+#include "picosha2.h"
 
 using namespace std;
 
@@ -8,11 +11,11 @@ class Block {
 public:
     string prevHash;
 
-    Block(uint32_t index, const string* data);
+    Block(uint32_t index, const string &data);
 
     string getHash();
 
-    void mineBlock(uint32_t difficulty);
+    void mineBlock(const uint32_t difficulty);
 
 private:
     uint32_t m_index;
