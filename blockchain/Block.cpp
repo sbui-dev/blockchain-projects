@@ -17,12 +17,24 @@ void Block::mineBlock(const uint32_t difficulty) {
     cstr[difficulty] = '\0';
 
     string str(cstr.get());
+    int count = 0;
+    cout << "Hashing... " << endl;
+    cout << "Index: " << m_index << endl;
+    cout << "Time: " << m_time << endl;
+    cout << "Data: " << m_data << endl;
+    cout << "Previous Hash: " << prevHash << endl;
+
+    // nonce is changed every round to calculate the hash
+    cout << "Finding a suitable nonce..." << endl;
 
     do {
         m_nonce++;
+        count++;
         m_hash = calculateHash();
     } while (m_hash.substr(0, difficulty) != str);
 
+    cout << "Tries before hash found: " << count << endl;
+    cout << "Nonce used: " << m_nonce << endl;
     cout << "Block mined: " << m_hash << endl;
 }
 
