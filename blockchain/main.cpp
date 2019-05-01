@@ -17,6 +17,10 @@ int main() {
     cout << endl;
     cout << "Mining block 3..." << endl;
     bChain.addBlock(Block(3, "Block 3 Data"));
+    cout << endl;
+
+    Block pBlock = bChain.getBlock(1);
+    pBlock.print();
 
     return 0;
 }

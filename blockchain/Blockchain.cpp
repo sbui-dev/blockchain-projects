@@ -15,3 +15,7 @@ void Blockchain::addBlock(Block bNew) {
 Block Blockchain::getLastBlock() const {
     return m_chain.back();
 }
+
+Block Blockchain::getBlock(int i) const {
+    return m_chain[i];
+}

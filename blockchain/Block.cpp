@@ -24,9 +24,10 @@ void Block::mineBlock(const uint32_t difficulty) {
     cout << "Data: " << m_data << endl;
     cout << "Previous Hash: " << prevHash << endl;
 
-    // nonce is changed every round to calculate the hash
     cout << "Finding a suitable nonce..." << endl;
 
+    // nonce is changed every round to calculate the hash
+    // hash needs to have leading number of 0s
     do {
         m_nonce++;
         count++;
@@ -48,4 +49,13 @@ inline string Block::calculateHash() const {
     string hex_str = picosha2::bytes_to_hex_string(hash.begin(), hash.end());
 
     return hex_str;
+}
+
+void Block::print() {
+    cout << "*** Block ***" << endl;
+    cout << "Index: " << m_index << endl;
+    cout << "Time: " << m_time << endl;
+    cout << "Data: " << m_data << endl;
+    cout << "Nonce: " << m_nonce << endl;
+    cout << "Hash: " << m_hash << endl;
 }

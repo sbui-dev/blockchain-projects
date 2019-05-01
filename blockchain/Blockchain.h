@@ -9,6 +9,7 @@ public:
     Blockchain();
 
     void addBlock(Block newBlock);
+    Block getBlock(int i) const;
 
 private:
     uint32_t m_difficulty;

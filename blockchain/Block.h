@@ -16,6 +16,7 @@ public:
     string getHash();
 
     void mineBlock(const uint32_t difficulty);
+    void print();
 
 private:
     uint32_t m_index;
