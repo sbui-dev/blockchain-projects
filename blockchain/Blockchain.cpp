@@ -53,6 +53,7 @@ bool Blockchain::validateBlockchain() {
 
     cout << "Validating blockchain..." << endl;
 
+    // validate the proof
     for (int i = 1; i < m_chain.size(); i++) {
         Block& currBlock = m_chain[i];
         string prevHash = m_chain[i - 1].getHash();

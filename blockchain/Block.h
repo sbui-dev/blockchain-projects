@@ -28,6 +28,6 @@ private:
     uint32_t m_index{ 0 };
     int64_t m_nonce{ -1 };
     string m_data;
-    string m_hash;
+    string m_prevHash;
     time_t m_time;
 };

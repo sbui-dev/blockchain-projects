@@ -39,7 +39,7 @@ Json::Value Block::getJson() {
     root["timestamp"] = m_time;
     root["data"] = m_data;
     root["proof"] = m_nonce;
-    root["hash"] = m_hash;
+    root["previous_hash"] = m_prevHash;
 
     // TODO: remove debug output
     //cout << root << endl;
@@ -50,9 +50,9 @@ Json::Value Block::getJson() {
 // Prints all the information inside the block
 void Block::print() {
     cout << "*** Block ***" << endl;
-    cout << "Index: " << m_index << endl;
-    cout << "Timestamp: " << m_time << endl;
-    cout << "Data: " << m_data << endl;
-    cout << "Nonce: " << m_nonce << endl;
-    cout << "Hash: " << m_hash << endl;
+    cout << "index: " << m_index << endl;
+    cout << "timestamp: " << m_time << endl;
+    cout << "data: " << m_data << endl;
+    cout << "proof: " << m_nonce << endl;
+    cout << "previous_hash: " << m_prevHash << endl;
 }
