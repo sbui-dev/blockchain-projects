@@ -19,6 +19,7 @@ public:
     Block(uint32_t index, const string &data);
 
     string getHash();
+    int64_t getProof();
     void print();
     Json::Value getJson();
     string calculateHash(uint64_t nonce, string prevHash);

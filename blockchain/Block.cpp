@@ -12,6 +12,10 @@ string Block::getHash() {
     return m_hash;
 }
 
+int64_t Block::getProof() {
+    return m_nonce;
+}
+
 string Block::calculateHash(uint64_t nonce, string prevHash) {
     m_nonce = nonce;
 

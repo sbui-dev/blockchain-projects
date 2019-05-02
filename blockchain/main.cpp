@@ -26,6 +26,8 @@ int main() {
     cout << endl;
 
     // test
+    bChain.validateBlockchain();
+
     auto b = bChain.getFullChain();
 
     // test

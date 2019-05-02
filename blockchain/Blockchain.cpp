@@ -48,8 +48,23 @@ void Blockchain::mineBlock(Block &block, string prevHash) {
     cout << "Block mined: " << hash << endl;
 }
 
-bool Blockchain::validateBlock() {
-    return true;
+// validates an entire blockchain
+bool Blockchain::validateBlockchain() {
+
+    cout << "Validating blockchain..." << endl;
+
+    for (int i = 1; i < m_chain.size(); i++) {
+        Block& currBlock = m_chain[i];
+        string prevHash = m_chain[i - 1].getHash();
+
+        if (currBlock.getHash() != currBlock.calculateHash(currBlock.getProof(), prevHash)) {
+            cout << "Invalid blockchain detected!" << endl;
+            return true;
+        }
+    }
+
+    cout << "Valid blockchain!" << endl;
+    return false;
 }
 
 // Returns entire blockchain as a JSON
