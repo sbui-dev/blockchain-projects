@@ -153,11 +153,14 @@
   <ItemGroup>
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Blockchain.cpp" />
+    <ClCompile Include="jsoncpp\jsoncpp.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h" />
     <ClInclude Include="Blockchain.h" />
+    <ClInclude Include="jsoncpp\json-forwards.h" />
+    <ClInclude Include="jsoncpp\json\json.h" />
     <ClInclude Include="picosha2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

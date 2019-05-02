@@ -26,6 +26,7 @@ void Block::mineBlock(const uint32_t difficulty) {
 
     cout << "Finding a suitable nonce..." << endl;
 
+    // proof of work
     // nonce is changed every round to calculate the hash
     // hash needs to have leading number of 0s
     do {
@@ -49,6 +50,19 @@ inline string Block::calculateHash() const {
     string hex_str = picosha2::bytes_to_hex_string(hash.begin(), hash.end());
 
     return hex_str;
+}
+
+void Block::getJson() {
+    Json::Value root;
+
+    root["index"] = m_index;
+    root["time"] = m_time;
+    root["data"] = m_data;
+    root["proof"] = m_nonce;
+    root["hash"] = m_hash;
+
+    // TODO: remove debug output
+    cout << root << endl;
 }
 
 void Block::print() {

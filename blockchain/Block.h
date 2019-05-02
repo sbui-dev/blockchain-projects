@@ -4,6 +4,7 @@
 #include <sstream>
 #include <time.h>
 #include "picosha2.h"
+#include "jsoncpp/json/json.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ public:
 
     void mineBlock(const uint32_t difficulty);
     void print();
+    void getJson();
 
 private:
     uint32_t m_index;

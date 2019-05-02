@@ -19,8 +19,12 @@ int main() {
     bChain.addBlock(Block(3, "Block 3 Data"));
     cout << endl;
 
-    Block pBlock = bChain.getBlock(1);
-    pBlock.print();
+
+    // test
+    Block pBlock1 = bChain.getBlock(1);
+    pBlock1.getJson();
+    pBlock1.print();
+   
 
     return 0;
 }
