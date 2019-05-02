@@ -52,7 +52,7 @@ inline string Block::calculateHash() const {
     return hex_str;
 }
 
-void Block::getJson() {
+Json::Value Block::getJson() {
     Json::Value root;
 
     root["index"] = m_index;
@@ -62,7 +62,9 @@ void Block::getJson() {
     root["hash"] = m_hash;
 
     // TODO: remove debug output
-    cout << root << endl;
+    //cout << root << endl;
+
+    return root;
 }
 
 void Block::print() {

@@ -18,7 +18,7 @@ public:
 
     void mineBlock(const uint32_t difficulty);
     void print();
-    void getJson();
+    Json::Value getJson();
 
 private:
     uint32_t m_index;

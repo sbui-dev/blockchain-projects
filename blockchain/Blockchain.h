@@ -8,8 +8,10 @@ class Blockchain {
 public:
     Blockchain();
 
+    bool validateBlock();
     void addBlock(Block newBlock);
     Block getBlock(int i) const;
+    Json::Value getFullChain();
 
 private:
     uint32_t m_difficulty;
