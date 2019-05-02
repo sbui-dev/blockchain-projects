@@ -13,6 +13,12 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\3rdparty">
+      <UniqueIdentifier>{d75de088-067c-4d1a-b15b-4a4c1c8805e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\3rdparty">
+      <UniqueIdentifier>{e3b8ba80-cc64-4140-aee4-8f9c4d8208b9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Block.h">
@@ -21,14 +27,14 @@
     <ClInclude Include="Blockchain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="picosha2.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="jsoncpp\json\json.h">
+      <Filter>Header Files\3rdparty</Filter>
     </ClInclude>
     <ClInclude Include="jsoncpp\json-forwards.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\3rdparty</Filter>
     </ClInclude>
-    <ClInclude Include="jsoncpp\json\json.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="picosha2.h">
+      <Filter>Header Files\3rdparty</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -42,7 +48,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="jsoncpp\jsoncpp.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\3rdparty</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

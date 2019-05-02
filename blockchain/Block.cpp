@@ -23,6 +23,8 @@ void Block::mineBlock(const uint32_t difficulty) {
 
     string str(cstr.get());
     int count = 0;
+
+    // output what is being hashed
     cout << "Hashing... " << endl;
     cout << "Index: " << m_index << endl;
     cout << "Time: " << m_time << endl;
@@ -57,11 +59,12 @@ inline string Block::calculateHash() const {
     return hex_str;
 }
 
+// Returns a json object containing all the information inside the block
 Json::Value Block::getJson() {
     Json::Value root;
 
     root["index"] = m_index;
-    root["time"] = m_time;
+    root["timestamp"] = m_time;
     root["data"] = m_data;
     root["proof"] = m_nonce;
     root["hash"] = m_hash;
@@ -72,10 +75,11 @@ Json::Value Block::getJson() {
     return root;
 }
 
+// Prints all the information inside the block
 void Block::print() {
     cout << "*** Block ***" << endl;
     cout << "Index: " << m_index << endl;
-    cout << "Time: " << m_time << endl;
+    cout << "Timestamp: " << m_time << endl;
     cout << "Data: " << m_data << endl;
     cout << "Nonce: " << m_nonce << endl;
     cout << "Hash: " << m_hash << endl;

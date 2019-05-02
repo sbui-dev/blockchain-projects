@@ -26,7 +26,7 @@ int main() {
     cout << endl;
 
     // test
-    bChain.getFullChain();
+    auto b = bChain.getFullChain();
 
     // test
     //Block pBlock1 = bChain.getBlock(1);

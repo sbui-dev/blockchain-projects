@@ -26,7 +26,7 @@ public:
     Json::Value getJson();
 
 private:
-    uint32_t m_index;
+    uint32_t m_index{ 0 };
     int64_t m_nonce;
     string m_data;
     string m_hash;

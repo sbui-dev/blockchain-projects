@@ -9,7 +9,7 @@ Blockchain::Blockchain() {
     // create the first block aka the genesis block
     m_chain.emplace_back(Block(0, "Genesis Block"));
     // set leading zeros
-    m_difficulty = 2; // TODO: change back to 4
+    m_difficulty = 4; // TODO: change back to 4
     cout << "Number of leading 0s needed in hash: " << m_difficulty << endl;
 }
 
@@ -23,9 +23,7 @@ bool Blockchain::validateBlock() {
     return true;
 }
 
-/*
-** Returns entire blockchain as a JSON
-**/
+// Returns entire blockchain as a JSON
 Json::Value Blockchain::getFullChain() {
     Json::Value root;
 
