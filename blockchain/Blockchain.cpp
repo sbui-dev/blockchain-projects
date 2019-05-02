@@ -15,9 +15,37 @@ Blockchain::Blockchain() {
 
 void Blockchain::addBlock(string data) {
     Block newBlock = Block(m_chain.size(), data);
-    newBlock.prevHash = getLastBlock().getHash();
-    newBlock.mineBlock(m_difficulty);
+    mineBlock(newBlock, getLastBlock().getHash());
     m_chain.push_back(newBlock);
+}
+
+void Blockchain::mineBlock(Block &block, string prevHash) {
+
+    unique_ptr<char[]> cstr(new char[m_difficulty + 1]);
+
+    for (uint32_t i = 0; i < m_difficulty; ++i) {
+        cstr[i] = '0';
+    }
+    cstr[m_difficulty] = '\0';
+
+    string str(cstr.get());
+
+    // output what is being hashed
+    cout << "Doing proof of work..." << endl;
+    cout << "Previous Hash: " << prevHash << endl;
+
+    // proof of work
+    // nonce is changed every round to calculate the hash
+    // hash needs to have leading number of 0s
+    uint64_t nonce = -1;
+    string hash;
+    do {
+        nonce++;
+        hash = block.calculateHash(nonce, prevHash);
+    } while (hash.substr(0, m_difficulty) != str);
+ 
+    cout << "Nonce used: " << nonce << endl;
+    cout << "Block mined: " << hash << endl;
 }
 
 bool Blockchain::validateBlock() {

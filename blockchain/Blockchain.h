@@ -13,6 +13,7 @@ class Blockchain {
 public:
     Blockchain();
 
+    void mineBlock(Block &block, string prevHash);
     bool validateBlock();
     void addBlock(string data);
     Block getBlock(int i) const;
