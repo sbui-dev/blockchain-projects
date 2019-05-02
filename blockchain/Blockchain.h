@@ -1,3 +1,8 @@
+//  blockchain demo
+//
+//  Created by Steven Bui on 5/1/19.
+//  Copyright © 2019 Steven Bui. All rights reserved.
+//
 #pragma once
 #include <vector>
 #include "Block.h"

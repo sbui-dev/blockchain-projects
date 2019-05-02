@@ -1,3 +1,8 @@
+//  blockchain demo
+//
+//  Created by Steven Bui on 5/1/19.
+//  Copyright © 2019 Steven Bui. All rights reserved.
+//
 #include "Block.h"
 
 Block::Block(uint32_t index, const string &data) : m_index(index), m_data(data), m_nonce(-1), m_time(time(nullptr)) {
