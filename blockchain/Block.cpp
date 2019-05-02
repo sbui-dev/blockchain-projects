@@ -8,8 +8,8 @@
 Block::Block(uint32_t index, const string &data) : m_index(index), m_data(data), m_time(time(nullptr)) {
 }
 
-string Block::getHash() {
-    return m_hash;
+string Block::getPrevHash() {
+    return m_prevHash;
 }
 
 int64_t Block::getProof() {
@@ -26,7 +26,7 @@ string Block::calculateHash(uint64_t nonce, string prevHash) {
     picosha2::hash256(ss.str(), hash);
 
     string hex_str = picosha2::bytes_to_hex_string(hash.begin(), hash.end());
-    m_hash = hex_str;
+    m_prevHash = hex_str;
 
     return hex_str;
 }

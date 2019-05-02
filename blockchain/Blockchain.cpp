@@ -15,7 +15,7 @@ Blockchain::Blockchain() {
 
 void Blockchain::addBlock(string data) {
     Block newBlock = Block(m_chain.size(), data);
-    mineBlock(newBlock, getLastBlock().getHash());
+    mineBlock(newBlock, getLastBlock().getPrevHash());
     m_chain.push_back(newBlock);
 }
 
@@ -54,11 +54,11 @@ bool Blockchain::validateBlockchain() {
     cout << "Validating blockchain..." << endl;
 
     // validate the proof
-    for (int i = 1; i < m_chain.size(); i++) {
+    for (size_t i = 1; i < m_chain.size(); i++) {
         Block& currBlock = m_chain[i];
-        string prevHash = m_chain[i - 1].getHash();
+        string prevHash = m_chain[i - 1].getPrevHash();
 
-        if (currBlock.getHash() != currBlock.calculateHash(currBlock.getProof(), prevHash)) {
+        if (currBlock.getPrevHash() != currBlock.calculateHash(currBlock.getProof(), prevHash)) {
             cout << "Invalid blockchain detected!" << endl;
             return true;
         }
@@ -74,7 +74,7 @@ Json::Value Blockchain::getFullChain() {
 
     root["length"] = m_chain.size();
 
-    for (int i = 0; i < m_chain.size(); i++) {
+    for (size_t i = 0; i < m_chain.size(); i++) {
         root["chain"][i] = m_chain[i].getJson();
     }
 

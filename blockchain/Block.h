@@ -12,13 +12,15 @@
 #include "jsoncpp/json/json.h"
 
 using namespace std;
-
+/*
+a block contains index, timestamp, data, proof, and previous block's hash
+*/
 class Block {
 public:
 
     Block(uint32_t index, const string &data);
 
-    string getHash();
+    string getPrevHash();
     int64_t getProof();
     void print();
     Json::Value getJson();
