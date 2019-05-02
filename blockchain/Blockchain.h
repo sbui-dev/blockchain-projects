@@ -14,7 +14,7 @@ public:
     Blockchain();
 
     bool validateBlock();
-    void addBlock(Block newBlock);
+    void addBlock(string data);
     Block getBlock(int i) const;
     Json::Value getFullChain();
 

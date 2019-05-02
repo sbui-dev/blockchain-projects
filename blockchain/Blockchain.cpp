@@ -13,10 +13,11 @@ Blockchain::Blockchain() {
     cout << "Number of leading 0s needed in hash: " << m_difficulty << endl;
 }
 
-void Blockchain::addBlock(Block bNew) {
-    bNew.prevHash = getLastBlock().getHash();
-    bNew.mineBlock(m_difficulty);
-    m_chain.push_back(bNew);
+void Blockchain::addBlock(string data) {
+    Block newBlock = Block(m_chain.size(), data);
+    newBlock.prevHash = getLastBlock().getHash();
+    newBlock.mineBlock(m_difficulty);
+    m_chain.push_back(newBlock);
 }
 
 bool Blockchain::validateBlock() {
