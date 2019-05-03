@@ -23,10 +23,11 @@ int main() {
     cout << endl;
     cout << "Mining block 3..." << endl;
     bChain.addBlock("Block 3 Data");
+
     cout << endl;
 
     // test
-    bChain.validateBlockchain();
+    //bChain.validateBlockchain();
 
     auto b = bChain.getFullChain();
 

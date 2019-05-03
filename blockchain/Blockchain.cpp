@@ -54,8 +54,7 @@ bool Blockchain::validateBlockchain() {
 
     cout << "Validating blockchain..." << endl;
 
-    // TOOD: add newChain as param and validate m_chain against newChain
-
+    // validate proof of new blockchain
     for (size_t i = 1; i < m_chain.size(); i++) {
         Block& currBlock = m_chain[i];
         string prevHash = m_chain[i - 1].getPrevHash();
@@ -82,22 +81,29 @@ bool Blockchain::validateBlockchain() {
 
 // consensus algorithm
 bool Blockchain::resolveConflict(Blockchain &chain) {
-    auto bchain = chain.getBlockchain();
+    auto newChain = chain.getBlockchain();
 
     // TODO: get blockchain from newtork
     
-    // replacement chain can't be smaller
-    if (m_chain.size() > bchain.size()) {
+    // replacement blockchain can't be smaller than original blockchain
+    if (m_chain.size() > newChain.size()) {
         return false;
     }
 
-    // validate the chain
+    // check if previous hashes match in both chains up to original blockchain's length
+    for (int i = 0; i < m_chain.size(); i++) {
+        if (m_chain[i].getPrevHash() != newChain[i].getPrevHash()) {
+            return false;
+        }
+    }
+
+    // validate the new blockchain
     if (!chain.validateBlockchain()) {
         return false;
     }
 
     // replace current blockchain with new blockchain
-    m_chain = bchain;
+    m_chain = newChain;
 
     return true;
 }
