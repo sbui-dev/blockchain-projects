@@ -8,9 +8,31 @@
 Blockchain::Blockchain() {
     // create the first block aka the genesis block
     m_chain.emplace_back(Block(0, "Genesis Block"));
-    // set leading zeros
-    m_difficulty = 3; // TODO: change back to 4
     cout << "Number of leading 0s needed in hash: " << m_difficulty << endl;
+}
+
+Blockchain::Blockchain(Json::Value json) {
+    const Json::Value chain = json["chain"];
+    const Json::Value chainLen = json["length"];
+    int length = chainLen.asInt();
+
+    for (int i = 0; i < length; i++) {
+        cout << chain[i] << endl;
+        string data = chain[i]["data"].asString();
+        int32_t index = chain[i]["index"].asInt();
+        int64_t nonce = chain[i]["proof"].asInt64();
+        string prevHash = chain[i]["previous_hash"].asString();
+        int32_t timestamp = chain[i]["timestamp"].asInt();
+
+        Block newBlock = Block(index, data, prevHash, nonce, static_cast<time_t>(timestamp));
+        m_chain.push_back(newBlock);
+    }
+    // validate
+    if (!validateBlockchain()) {
+        cout << "Error" << endl;
+    }
+    // debug output
+    getFullChain();
 }
 
 void Blockchain::addBlock(string data) {
@@ -110,24 +132,7 @@ bool Blockchain::resolveConflict(Blockchain &chain) {
 
 // create a blockchain from json
 void Blockchain::createBlockchain(string json) {
-    Json::Value root;
-    Json::CharReaderBuilder builder;
-    Json::CharReader *reader = builder.newCharReader();
-    string errors;
 
-    if (!reader->parse(json.c_str(), json.c_str() + json.size(), &root, &errors))
-    {
-        cout << "error parsing the json string" << endl;
-        exit(-1); // TODO: do correctly
-    }
-
-    const Json::Value chain = root["chain"];
-    const Json::Value chainLen = root["length"];
-    int length = chainLen.asInt();
-
-    for (int i = 0; i < length; i++) {
-        cout << chain[i] << endl;
-    }
 }
 
 vector<Block> Blockchain::getBlockchain() {

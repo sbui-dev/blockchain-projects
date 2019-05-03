@@ -11,25 +11,35 @@
 #include <sstream> //std::stringstream
 
 // use for debugging json
-string readJsonFile() {
+Json::Value readJsonFile() {
     ifstream inFile;
     inFile.open("testJson.txt"); //open the input file
 
     stringstream strStream;
     strStream << inFile.rdbuf(); //read the file
-    string str = strStream.str(); //str holds the content of the file
+    string json = strStream.str(); //str holds the content of the file
 
-    cout << str << endl; //you can do anything with the string!!!
+    cout << json << endl; //you can do anything with the string!!!
 
-    return str;
+    Json::Value root;
+    Json::CharReaderBuilder builder;
+    Json::CharReader* reader = builder.newCharReader();
+    string errors;
+
+    if (!reader->parse(json.c_str(), json.c_str() + json.size(), &root, &errors))
+    {
+        cout << "error parsing the json string" << endl;
+        exit(-1); // TODO: do correctly
+    }
+
+    return root;
 }
 
 int main() {
     cout << "*** Blockchain Demo ***" << endl;
 
-    string json = readJsonFile();
-    Blockchain fileChain = Blockchain();
-    fileChain.createBlockchain(json);
+    Json::Value json = readJsonFile();
+    Blockchain fileChain = Blockchain(json);
 
     Blockchain bChain = Blockchain();
 

@@ -8,6 +8,9 @@
 Block::Block(uint32_t index, const string &data) : m_index(index), m_data(data), m_time(time(nullptr)) {
 }
 
+Block::Block(uint32_t index, const string& data, string prevHash, int64_t nonce, time_t time) : m_index(index), m_data(data), m_time(time), m_prevHash(prevHash), m_nonce(nonce) {
+}
+
 string Block::getPrevHash() {
     return m_prevHash;
 }

@@ -18,6 +18,7 @@ class Block {
 public:
 
     Block(uint32_t index, const string &data);
+    Block(uint32_t index, const string& data, string prevHash, int64_t nonce, time_t time);
 
     string getPrevHash();
     int64_t getProof();

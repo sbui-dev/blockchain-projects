@@ -12,6 +12,7 @@ using namespace std;
 class Blockchain {
 public:
     Blockchain();
+    Blockchain(Json::Value json);
 
     void createBlockchain(string json);
     void mineBlock(Block &block, string prevHash);
@@ -23,7 +24,7 @@ public:
     vector<Block> getBlockchain();
 
 private:
-    uint32_t m_difficulty;
+    const uint32_t m_difficulty{ 3 };
     vector<Block> m_chain;
 
     Block getLastBlock() const;
