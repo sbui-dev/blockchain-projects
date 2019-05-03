@@ -14,9 +14,9 @@ public:
     Blockchain();
 
     void mineBlock(Block &block, string prevHash);
-    bool validateBlockchain();
     void addBlock(string data);
     Block getBlock(int i) const;
+    bool validateBlockchain();
     Json::Value getFullChain();
 
 private:

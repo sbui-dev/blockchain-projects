@@ -57,9 +57,18 @@ bool Blockchain::validateBlockchain() {
     for (size_t i = 1; i < m_chain.size(); i++) {
         Block& currBlock = m_chain[i];
         string prevHash = m_chain[i - 1].getPrevHash();
+        string calculatedHash = currBlock.calculateHash(currBlock.getProof(), prevHash);
+        
+        cout << "index: " << i - 1 << "'s prevHash is: " << prevHash << endl;
+
+        cout << "index: " << i << endl;
+        cout << "previous hash: " << currBlock.getPrevHash() << endl;
+        cout << "proof: " << currBlock.getProof() << endl;
+
+        cout << "calculated hash is " << calculatedHash << endl << endl;
 
         // validate the proof
-        if (currBlock.getPrevHash() != currBlock.calculateHash(currBlock.getProof(), prevHash)) {
+        if (currBlock.getPrevHash() != calculatedHash) {
             cout << "Invalid blockchain detected!" << endl;
             return false;
         }
