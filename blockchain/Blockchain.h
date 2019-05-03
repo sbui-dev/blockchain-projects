@@ -18,6 +18,8 @@ public:
     Block getBlock(int i) const;
     bool validateBlockchain();
     Json::Value getFullChain();
+    bool resolveConflict(Blockchain &chain);
+    vector<Block> getBlockchain();
 
 private:
     uint32_t m_difficulty;

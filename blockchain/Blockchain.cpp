@@ -48,11 +48,13 @@ void Blockchain::mineBlock(Block &block, string prevHash) {
     cout << "Block mined: " << hash << endl;
 }
 
-// validates an entire blockchain
+// validates an entire blockchain using prevHash and nonce
 // returns false for invalid; true for valid
 bool Blockchain::validateBlockchain() {
 
     cout << "Validating blockchain..." << endl;
+
+    // TOOD: add newChain as param and validate m_chain against newChain
 
     for (size_t i = 1; i < m_chain.size(); i++) {
         Block& currBlock = m_chain[i];
@@ -76,6 +78,32 @@ bool Blockchain::validateBlockchain() {
 
     cout << "Valid blockchain!" << endl;
     return true;
+}
+
+// consensus algorithm
+bool Blockchain::resolveConflict(Blockchain &chain) {
+    auto bchain = chain.getBlockchain();
+
+    // TODO: get blockchain from newtork
+    
+    // replacement chain can't be smaller
+    if (m_chain.size() > bchain.size()) {
+        return false;
+    }
+
+    // validate the chain
+    if (!chain.validateBlockchain()) {
+        return false;
+    }
+
+    // replace current blockchain with new blockchain
+    m_chain = bchain;
+
+    return true;
+}
+
+vector<Block> Blockchain::getBlockchain() {
+    return m_chain;
 }
 
 // Returns entire blockchain as a JSON
