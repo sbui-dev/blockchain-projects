@@ -1,0 +1,34 @@
+{
+        "chain" :
+        [
+                {
+                        "data" : "Genesis Block",
+                        "index" : 0,
+                        "previous_hash" : "",
+                        "proof" : -1,
+                        "timestamp" : 1556872763
+                },
+                {
+                        "data" : "Block 1 Data",
+                        "index" : 1,
+                        "previous_hash" : "0004855582a547331fafe9f8bdc8e84188e68dd5698f8ded0d4b1b345cafa85f",
+                        "proof" : 57,
+                        "timestamp" : 1556872763
+                },
+                {
+                        "data" : "Block 2 Data",
+                        "index" : 2,
+                        "previous_hash" : "000d470f83d41735c2e139fc68970e28e3d0e4a8860b7c9d1b5eefee2c80967a",
+                        "proof" : 665,
+                        "timestamp" : 1556872763
+                },
+                {
+                        "data" : "Block 3 Data",
+                        "index" : 3,
+                        "previous_hash" : "000c60d8d838d6a8ccec1256a69c54607bddb806921afc2442148580e3583c27",
+                        "proof" : 4339,
+                        "timestamp" : 1556872763
+                }
+        ],
+        "length" : 4
+}

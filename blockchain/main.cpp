@@ -7,8 +7,29 @@
 #include <iostream>
 #include "Blockchain.h"
 
+#include <fstream>
+#include <sstream> //std::stringstream
+
+// use for debugging json
+string readJsonFile() {
+    ifstream inFile;
+    inFile.open("testJson.txt"); //open the input file
+
+    stringstream strStream;
+    strStream << inFile.rdbuf(); //read the file
+    string str = strStream.str(); //str holds the content of the file
+
+    cout << str << endl; //you can do anything with the string!!!
+
+    return str;
+}
+
 int main() {
     cout << "*** Blockchain Demo ***" << endl;
+
+    string json = readJsonFile();
+    Blockchain fileChain = Blockchain();
+    fileChain.createBlockchain(json);
 
     Blockchain bChain = Blockchain();
 

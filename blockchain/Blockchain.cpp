@@ -91,7 +91,7 @@ bool Blockchain::resolveConflict(Blockchain &chain) {
     }
 
     // check if previous hashes match in both chains up to original blockchain's length
-    for (int i = 0; i < m_chain.size(); i++) {
+    for (size_t i = 0; i < m_chain.size(); i++) {
         if (m_chain[i].getPrevHash() != newChain[i].getPrevHash()) {
             return false;
         }
@@ -106,6 +106,28 @@ bool Blockchain::resolveConflict(Blockchain &chain) {
     m_chain = newChain;
 
     return true;
+}
+
+// create a blockchain from json
+void Blockchain::createBlockchain(string json) {
+    Json::Value root;
+    Json::CharReaderBuilder builder;
+    Json::CharReader *reader = builder.newCharReader();
+    string errors;
+
+    if (!reader->parse(json.c_str(), json.c_str() + json.size(), &root, &errors))
+    {
+        cout << "error parsing the json string" << endl;
+        exit(-1); // TODO: do correctly
+    }
+
+    const Json::Value chain = root["chain"];
+    const Json::Value chainLen = root["length"];
+    int length = chainLen.asInt();
+
+    for (int i = 0; i < length; i++) {
+        cout << chain[i] << endl;
+    }
 }
 
 vector<Block> Blockchain::getBlockchain() {
