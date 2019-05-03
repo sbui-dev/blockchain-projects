@@ -12,9 +12,8 @@
 #include "jsoncpp/json/json.h"
 
 using namespace std;
-/*
-a block contains index, timestamp, data, proof, and previous block's hash
-*/
+
+// a block contains index, timestamp, data, proof, and previous block's hash
 class Block {
 public:
 

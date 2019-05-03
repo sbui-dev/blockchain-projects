@@ -9,7 +9,7 @@ Blockchain::Blockchain() {
     // create the first block aka the genesis block
     m_chain.emplace_back(Block(0, "Genesis Block"));
     // set leading zeros
-    m_difficulty = 4; // TODO: change back to 4
+    m_difficulty = 3; // TODO: change back to 4
     cout << "Number of leading 0s needed in hash: " << m_difficulty << endl;
 }
 
@@ -49,23 +49,24 @@ void Blockchain::mineBlock(Block &block, string prevHash) {
 }
 
 // validates an entire blockchain
+// returns false for invalid; true for valid
 bool Blockchain::validateBlockchain() {
 
     cout << "Validating blockchain..." << endl;
 
-    // validate the proof
     for (size_t i = 1; i < m_chain.size(); i++) {
         Block& currBlock = m_chain[i];
         string prevHash = m_chain[i - 1].getPrevHash();
 
+        // validate the proof
         if (currBlock.getPrevHash() != currBlock.calculateHash(currBlock.getProof(), prevHash)) {
             cout << "Invalid blockchain detected!" << endl;
-            return true;
+            return false;
         }
     }
 
     cout << "Valid blockchain!" << endl;
-    return false;
+    return true;
 }
 
 // Returns entire blockchain as a JSON
